@@ -254,8 +254,19 @@ let websiteLink = window.location.hostname
 
 let pieces = websiteLink.split(".");
 console.log(pieces);
+function getName(){
 
-let websiteName = websiteLink.split("//")[0].split(".")[1]
+    let websiteName = websiteLink.split("//")[0]
+
+    if (websiteName.split(".")[0]==="www"){
+        return websiteName.split(".")[1]
+   }else{
+       return websiteName.split(".")[0]
+   }
+   
+}
+
+
 
 let correct = false;
 for (let char of pieces) {
@@ -269,5 +280,5 @@ if (correct) {
 
 } else {
     document.head.innerHTML=styling()
-    document.body.innerHTML = htmlBody(websiteName);
+    document.body.innerHTML = htmlBody(getName());
 }
